@@ -1,0 +1,64 @@
+.signup-page {
+  max-width: 450px;               /* slightly wider than login */
+  margin: 120px auto 0;           /* top spacing for navbar */
+  padding: 40px;
+  background: var(--color-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.signup-page h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--color-navy);
+  font-size: 28px;
+}
+
+.signup-page label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--color-darker);
+}
+
+.signup-page input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border: 1px solid var(--color-dark);
+  font-size: 16px;
+}
+
+.signup-page button {
+  width: 100%;
+  padding: 14px;
+  background: var(--color-dark);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.signup-page button:hover {
+  background: var(--color-mid);
+  color: black;
+}
+
+.signup-page p {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--color-darker);
+}
+
+.signup-page a {
+  color: var(--color-mid);
+  text-decoration: none;
+}
+
+.signup-page a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,10 @@
+<section class="courses-page">
+  <h2>All Courses</h2>
+  <div class="course-list">
+    <div class="course-card" *ngFor="let course of courses">
+      <h3>{{ course.name }}</h3>
+      <p>{{ course.description }}</p>
+      <a [routerLink]="['/courses', course.id]">View Notes</a>
+    </div>
+  </div>
+</section>

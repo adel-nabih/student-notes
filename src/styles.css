@@ -1,0 +1,21 @@
+/* Reset and global box sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f5f9fa;
+  overflow-x: hidden;   /* prevent horizontal scroll */
+}
+
+/* Color palette */
+:root {
+  --color-light: #a7ebf2;
+  --color-mid: #54acbf;
+  --color-dark: #26658c;
+  --color-darker: #023859;
+  --color-navy: #011c40;
+}

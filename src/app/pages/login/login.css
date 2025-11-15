@@ -1,0 +1,48 @@
+.login-page {
+  max-width: 400px;
+  margin: 120px auto 0; /* top spacing for navbar */
+  padding: 40px;
+  background: var(--color-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.login-page h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--color-navy);
+}
+
+.login-page label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.login-page input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--color-dark);
+}
+
+.login-page button {
+  width: 100%;
+  padding: 12px;
+  background: var(--color-dark);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-page button:hover {
+  background: var(--color-mid);
+  color: black;
+}
+
+.login-page p {
+  text-align: center;
+  margin-top: 15px;
+}

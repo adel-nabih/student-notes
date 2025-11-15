@@ -1,0 +1,62 @@
+/* Add padding top to compensate for fixed navbar */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 60px 80px;  /* top padding increased for navbar */
+  background: var(--color-light);
+  max-width: 100%;             /* prevents overflow */
+  box-sizing: border-box;
+  overflow-x: hidden;          /* prevent horizontal scroll */
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  color: var(--color-navy);
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 20px;
+  color: var(--color-darker);
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  padding: 12px 28px;
+  background: var(--color-dark);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.cta-btn:hover {
+  background: var(--color-mid);
+  color: black;
+}
+
+.hero-image img {
+  width: 400px;
+  max-width: 100%;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 40px;
+  background: var(--color-darker);
+  color: white;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.feature h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.feature p {
+  font-size: 16px;
+  max-width: 250px;
+  text-align: center;
+}
