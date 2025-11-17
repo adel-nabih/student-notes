@@ -9,6 +9,8 @@ import { UploadNotesComponent } from './pages/upload-notes/upload-notes';
 import { ContactComponent } from './pages/contact/contact';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { NavbarComponent } from './components/navbar/navbar';
+import { provideHttpClient } from '@angular/common/http';
+
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -33,5 +35,8 @@ export class App {
 }
 
 bootstrapApplication(App, {
-  providers: [provideRouter(routes)]
+  providers: [
+    provideRouter(routes),
+    provideHttpClient()
+  ]
 });

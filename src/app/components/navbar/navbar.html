@@ -6,6 +6,11 @@
     <li><a routerLink="/courses">Courses</a></li>
     <li><a routerLink="/upload">Upload Notes</a></li>
     <li><a routerLink="/contact">Contact</a></li>
-    <li><a routerLink="/login" class="login-btn">Login</a></li>
+
+    @if (isLoggedIn()) {
+      <li><a (click)="logout()" class="login-btn">Logout</a></li>
+    } @else {
+      <li><a routerLink="/login" class="login-btn">Login</a></li>
+    }
   </ul>
 </nav>

@@ -51,3 +51,28 @@
   background: var(--color-mid);
   color: black;
 }
+
+.logout-btn {
+  padding: 6px 14px;
+  background: var(--color-dark);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: var(--color-mid);
+  color: black;
+}
+
+/* User name spacing */
+.user-name {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+/* Add top padding to main content so it doesn't go under navbar */
+body, main, router-outlet {
+  padding-top: 60px; /* same as navbar height */
+}
