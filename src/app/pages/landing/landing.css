@@ -1,38 +1,44 @@
-/* Add padding top to compensate for fixed navbar */
+/* ================= GLOBAL ================= */
+body {
+  padding-bottom: 70px; /* space for fixed footer */
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* ================= HERO ================= */
 .hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 120px 60px 80px;  /* top padding increased for navbar */
-  background: var(--color-light);
-  max-width: 100%;             /* prevents overflow */
+  padding: 120px 60px 80px;
+  background: linear-gradient(135deg, #e8f1ff, #d2e2ff);
+  max-width: 100%;
   box-sizing: border-box;
-  overflow-x: hidden;          /* prevent horizontal scroll */
 }
 
 .hero-text h1 {
   font-size: 48px;
-  color: var(--color-navy);
+  color: #1e3a8a;
   margin-bottom: 20px;
 }
 
 .hero-text p {
   font-size: 20px;
-  color: var(--color-darker);
+  color: #475569;
   margin-bottom: 30px;
 }
 
 .cta-btn {
   padding: 12px 28px;
-  background: var(--color-dark);
+  background: #2563eb;
   color: white;
   text-decoration: none;
   border-radius: 6px;
+  transition: 0.3s;
 }
 
 .cta-btn:hover {
-  background: var(--color-mid);
-  color: black;
+  background: #1d4ed8;
 }
 
 .hero-image img {
@@ -40,13 +46,13 @@
   max-width: 100%;
 }
 
+/* ================= FEATURES ================= */
 .features {
   display: flex;
   justify-content: space-around;
   padding: 60px 40px;
-  background: var(--color-darker);
+  background: #1e3a8a;
   color: white;
-  max-width: 100%;
   box-sizing: border-box;
 }
 
@@ -59,4 +65,231 @@
   font-size: 16px;
   max-width: 250px;
   text-align: center;
+}
+
+/* ================= HOW TO USE ================= */
+.how-to-use {
+  padding: 80px 40px;
+  background: #eef5ff;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  color: #1e3a8a;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  text-align: center;
+}
+
+.step-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.15);
+  transition: 0.3s;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+.step-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: #2563eb;
+}
+
+.step-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #1e3a8a;
+}
+
+.step-card p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* ================= TESTIMONIALS ================= */
+.testimonials {
+  padding: 80px 40px;
+  background: #eef5ff;
+}
+
+.testimonials-title {
+  text-align: center;
+  font-size: 32px;
+  color: #1e3a8a;
+  margin-bottom: 40px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border-left: 6px solid #2563eb;
+  transition: 0.25s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.quote {
+  font-size: 18px;
+  color: #1e293b;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.author {
+  font-size: 15px;
+  color: #475569;
+  font-weight: 600;
+}
+
+/* ================= CALL TO ACTION ================= */
+.cta-section {
+  background: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.cta-section p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.cta-btn-large {
+  padding: 16px 40px;
+  font-size: 20px;
+  background: white;
+  color: #2563eb;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.cta-btn-large:hover {
+  background: #e0e7ff;
+}
+
+/* ================= THIN FIXED FOOTER ================= */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  background: #0f172a;
+  color: #dce3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 3px solid #2563eb;
+  z-index: 999;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-icons a {
+  margin-left: 16px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #94a3b8;
+  transition: 0.2s;
+}
+
+.footer-icons a:hover {
+  color: #60a5fa;
+  transform: scale(1.2);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .hero-image img {
+    width: 280px;
+    margin-bottom: 40px;
+  }
+
+  .features {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .how-to-use .steps-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card {
+    max-width: 450px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    font-size: 28px;
+  }
+
+  .cta-section p {
+    font-size: 16px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .footer-icons a {
+    margin: 0 10px;
+  }
 }
