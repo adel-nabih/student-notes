@@ -19,3 +19,7 @@ body {
   --color-darker: #023859;
   --color-navy: #011c40;
 }
+
+.courses-page {
+  padding-top: 80px; /* or whatever the height of your navbar is */
+}
