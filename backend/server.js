@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
+// 1. IMPORT YOUR ROUTES
+import authRoutes from "./routes/auth.js"; 
+
 dotenv.config();
 
 const app = express();
@@ -24,8 +27,13 @@ app.get("/", (req, res) => {
   res.json({ message: "Server is running" });
 });
 
+// 2. USE YOUR ROUTES
+// This tells Express that any request starting with '/auth'
+// should be handled by your 'authRoutes' file.
+app.use("/auth", authRoutes);
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`erver running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

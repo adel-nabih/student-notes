@@ -1,13 +1,17 @@
 <section class="login-page">
   <h2>Login</h2>
-  <form>
-    <label for="email">Email</label>
-    <input type="email" id="email" placeholder="Enter your email" required>
+  <form (submit)="submit(); $event.preventDefault()">
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" name="email" required>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Enter your password" required>
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" name="password" required>
 
     <button type="submit">Login</button>
+
+    @if (errorMsg()) {
+      <p class="error">{{ errorMsg() }}</p>
+    }
   </form>
   <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
 </section>

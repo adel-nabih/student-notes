@@ -1,7 +1,8 @@
 <section class="courses-page">
-  <h2>All Courses</h2>
 
   <!-- Major Tabs -->
+  <h2 class="courses-heading">All Courses</h2>
+
   <div class="major-tabs">
     <button 
       *ngFor="let major of majors"
@@ -11,7 +12,6 @@
     </button>
   </div>
 
-  <!-- Filtered Courses -->
   <div class="course-list">
     <div class="course-card" *ngFor="let course of filteredCourses">
       <h3>{{ course.name }}</h3>

@@ -1,3 +1,4 @@
+/* Major Tabs */
 .major-tabs {
   display: flex;
   justify-content: center;
@@ -24,21 +25,34 @@
   background: #26658c;
 }
 
+/* Course List */
+
+
 .course-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;            /* Allow cards to wrap to next line */
+  justify-content: center;    /* Center the cards horizontally */
+  gap: 15px;                  /* Space between cards */
+  margin-bottom: 20px;
 }
 
+/* Course Card */
 .course-card {
   background: #a7ebf2;
-  width: 300px;
+  width: 300px;               /* Fixed width for uniform cards */
   padding: 15px;
   border-radius: 8px;
   text-align: center;
+  flex-shrink: 0;             /* Prevent cards from shrinking */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
 }
 
+.course-card:hover {
+  transform: translateY(-5px); /* Small hover effect */
+}
+
+/* Course Card Link/Button */
 .course-card a {
   display: inline-block;
   margin-top: 10px;
@@ -47,4 +61,9 @@
   color: white;
   border-radius: 4px;
   text-decoration: none;
+  transition: background 0.2s;
+}
+
+.course-card a:hover {
+  background: #023859;
 }
