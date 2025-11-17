@@ -1,0 +1,50 @@
+.major-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.major-tabs button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #54acbf;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.major-tabs button.active {
+  background: #023859;
+}
+
+.major-tabs button:hover {
+  background: #26658c;
+}
+
+.course-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.course-card {
+  background: #a7ebf2;
+  width: 300px;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.course-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  background: #54acbf;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}

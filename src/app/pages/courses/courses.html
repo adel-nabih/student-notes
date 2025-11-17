@@ -1,7 +1,19 @@
 <section class="courses-page">
   <h2>All Courses</h2>
+
+  <!-- Major Tabs -->
+  <div class="major-tabs">
+    <button 
+      *ngFor="let major of majors"
+      (click)="selectMajor(major)"
+      [class.active]="major === selectedMajor">
+      {{ major }}
+    </button>
+  </div>
+
+  <!-- Filtered Courses -->
   <div class="course-list">
-    <div class="course-card" *ngFor="let course of courses">
+    <div class="course-card" *ngFor="let course of filteredCourses">
       <h3>{{ course.name }}</h3>
       <p>{{ course.description }}</p>
       <a [routerLink]="['/courses', course.id]">View Notes</a>
