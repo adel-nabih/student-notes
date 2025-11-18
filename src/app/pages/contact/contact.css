@@ -1,0 +1,148 @@
+/* * 1. MAIN CONTAINER
+ * This fixes the navbar overlap problem.
+ * Adjust '80px' to match your navbar's height.
+ */
+.contact-page {
+  padding-top: 80px; /* IMPORTANT: Adjust this to your navbar's height */
+  width: 100%;
+  max-width: 600px; /* Set a max width for the form */
+  margin: 0 auto; /* Center the form on the page */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  box-sizing: border-box; /* Ensures padding doesn't break layout */
+}
+
+.contact-page h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.contact-page p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* * 2. LOGGED-OUT VIEW
+ * Styles the "Please Log In" prompt
+ */
+.login-prompt {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+}
+
+.login-prompt .login-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.login-prompt .login-btn:hover {
+  background-color: #0056b3;
+}
+
+/* * 3. FORM STYLING
+ * Styles the form, labels, and inputs
+ */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Adds space between form elements */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Important for padding */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group textarea {
+  resize: vertical; /* Allow vertical resize */
+  min-height: 120px;
+}
+
+/* Add a focus state for visual feedback */
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0,123,255,0.25);
+}
+
+/* * 4. BUTTON STYLING
+ * Styles the submit button and its disabled state
+ */
+button[type="submit"] {
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #28a745; /* Green for submit */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Style for when the button is disabled (during submission) */
+button[type="submit"]:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* * 5. MESSAGE STYLING
+ * Styles for success and error messages
+ */
+.success-message {
+  color: #218838;
+  background-color: #e9f7eb;
+  border: 1px solid #b8e6c3;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.error-message {
+  color: #d93025;
+  background-color: #fce8e6;
+  border: 1px solid #f6c8c4;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+}

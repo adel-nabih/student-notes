@@ -19,34 +19,18 @@ export const signup = async (req, res) => {
   try {
     const { name, email, universityId, password } = req.body;
 
-    // Validate required fields
-    if (!name || !email || !universityId || !password) {
-      return res.status(400).json({ msg: "All fields are required" });
-    }
-
-    // Email already exists?
-    // We can rely on the Mongoose 'unique' error, but this is cleaner
-    const emailExists = await User.findOne({ email });
-    if (emailExists) {
-      return res.status(409).json({ msg: "Email already exists" });
-    }
-
-    // University ID already exists?
-    const idExists = await User.findOne({ universityId });
-    if (idExists) {
-      return res.status(409).json({ msg: "University ID already exists" });
-    }
+    // ... (validation code is fine)
 
     // Hash password
     const hashed = await bcrypt.hash(password, 10);
 
     // Create user
-    // Mongoose 'match' validation in User.js will run here
     const user = await User.create({
       name,
       email,
       universityId,
       password: hashed,
+      // Note: The 'role' will automatically be set to 'user' by default from your model
     });
 
     // Create token
@@ -60,10 +44,11 @@ export const signup = async (req, res) => {
         name: user.name,
         email: user.email,
         universityId: user.universityId,
+        role: user.role // <-- 1. ADDED THIS LINE
       },
     });
   } catch (err) {
-    // Handle Mongoose validation errors
+    // ... (error handling is fine)
     if (err.name === 'ValidationError') {
       return res.status(400).json({ msg: err.message });
     }
@@ -79,7 +64,7 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Validate
+    // ... (validation is fine)
     if (!email || !password) {
       return res.status(400).json({ msg: "Email and password are required" });
     }
@@ -100,6 +85,7 @@ export const login = async (req, res) => {
         name: user.name,
         email: user.email,
         universityId: user.universityId,
+        role: user.role // <-- 2. ADDED THIS LINE
       },
     });
   } catch (err) {
@@ -112,6 +98,7 @@ export const login = async (req, res) => {
 // -----------------------------
 export const getMe = async (req, res) => {
   try {
+    // ... (code is fine)
     const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
@@ -122,10 +109,11 @@ export const getMe = async (req, res) => {
     const user = await User.findById(decoded.id).select("-password");
 
     if (!user) {
-      return res.status(404).json({ msg: "User not found" });
+      return res.status(4404).json({ msg: "User not found" });
     }
-
-    res.json({ user });
+    
+    // This route already sends the full user object (including role)
+    res.json({ user }); 
   } catch (err) {
     res.status(401).json({ msg: "Invalid token", error: err.message });
   }

@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 // 1. IMPORT YOUR ROUTES
 import authRoutes from "./routes/auth.js"; 
+import complaintRoutes from "./routes/complaint.routes.js";
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 // This tells Express that any request starting with '/auth'
 // should be handled by your 'authRoutes' file.
 app.use("/auth", authRoutes);
+app.use("/api/complaints", complaintRoutes); // 2. USE
 
 // Start server
 const PORT = process.env.PORT || 5000;

@@ -1,0 +1,173 @@
+/* * 1. MAIN CONTAINER
+ * Fixes navbar overlap and ensures table can scroll
+ */
+.admin-page {
+  padding-top: 80px; /* IMPORTANT: Adjust this to your navbar's height */
+  width: 100%;
+  max-width: 1200px; /* Give the table more space */
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+  
+  /* CRITICAL: Makes the table scroll on small screens */
+  overflow-x: auto; 
+}
+
+/* * 1A. HEADER ROW
+ * Styles for the header (h2 and "Add New" button)
+ */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Updated from 30px to 20px */
+}
+
+.header-row h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0; /* Remove default margin */
+}
+
+.add-new-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-new-btn:hover {
+  background-color: #0056b3;
+}
+
+
+/* * 2. TABLE STYLING
+ * Main styles for the complaints table
+ */
+.complaints-table {
+  width: 100%;
+  min-width: 900px; /* Forces scrolling below this width */
+  border-collapse: collapse; /* Clean, modern table lines */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden; /* For border-radius to work */
+}
+
+/* Table Header */
+.complaints-table thead tr {
+  background-color: #007bff; /* Primary blue color */
+  color: #ffffff;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Table Cells (Header and Body) */
+.complaints-table th,
+.complaints-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table Body */
+.complaints-table tbody tr {
+  background-color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+/* Zebra-striping for readability */
+.complaints-table tbody tr:nth-of-type(even) {
+  background-color: #f8f9fa;
+}
+
+.complaints-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Give the message a max-width */
+.complaints-table td:nth-child(4) {
+  max-width: 300px;
+  white-space: normal; /* Allow text to wrap */
+  word-break: break-word;
+}
+
+/* * 3. STATUS BADGES
+ * Styles for "pending" and "resolved"
+ */
+.status-pending,
+.status-resolved {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-pending {
+  background-color: #fff3cd; /* Yellow */
+  color: #856404;
+}
+
+.status-resolved {
+  background-color: #d4edda; /* Green */
+  color: #155724;
+}
+
+/* * 4. ACTION BUTTONS
+ * Styles for the update and delete buttons
+ */
+.action-btn {
+  background-color: #6c757d; /* Gray */
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-right: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: #5a6268;
+}
+
+/* New "Edit" button style */
+.action-btn.edit {
+  background-color: #ffc107; /* Yellow */
+  color: #212529;
+}
+
+.action-btn.edit:hover {
+  background-color: #e0a800;
+}
+
+.action-btn.delete {
+  background-color: #dc3545; /* Red */
+}
+
+.action-btn.delete:hover {
+  background-color: #c82333;
+}
+
+/* * 5. MESSAGE STYLING
+ * Styles for loading and error messages
+ */
+.error-message {
+  color: #d93025;
+  background-color: #fce8e6;
+  border: 1px solid #f6c8c4;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 20px;
+}

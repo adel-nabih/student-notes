@@ -28,7 +28,13 @@ const userSchema = new mongoose.Schema(
       unique: true,
       trim: true,
       match: /^[0-9]{5,10}$/, // This is still active
-    }
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user'
+    },
+    
   },
   { timestamps: true }
 );

@@ -7,6 +7,10 @@
     <li><a routerLink="/upload">Upload Notes</a></li>
     <li><a routerLink="/contact">Contact</a></li>
 
+    @if (isAdmin()) {
+      <li><a routerLink="/admin/complaints" class="admin-link">Admin Panel</a></li>
+    }
+
     @if (isLoggedIn()) {
       <li><a (click)="logout()" class="login-btn">Logout</a></li>
     } @else {
