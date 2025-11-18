@@ -16,7 +16,7 @@ export class NavbarComponent {
   
   // Read the signals from the service
   isLoggedIn = this.auth.isLoggedIn;
-  isAdmin = this.auth.isAdmin; // <-- 1. ADDED: Read the new admin signal
+  isAdmin = this.auth.isAdmin; 
 
   // The constructor is not needed for injection
   // constructor() {}

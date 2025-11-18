@@ -12,14 +12,13 @@ const adminMiddleware = async (req, res, next) => {
       // Attach user to the request
       req.user = await User.findById(decoded.id).select('-password');
 
-      // --- THE NEW PART ---
       // Check if user is an admin
       if (req.user && req.user.role === 'admin') {
         next();
       } else {
         res.status(403).json({ msg: 'Forbidden: Admin access only' });
       }
-      // ---------------------
+      
 
     } catch (error) {
       res.status(401).json({ msg: 'Not authorized, token failed' });

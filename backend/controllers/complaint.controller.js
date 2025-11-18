@@ -22,7 +22,7 @@ export const getAllComplaints = async (req, res) => {
     // .populate() fetches the user's name and email instead of just the ID
     const complaints = await Complaint.find()
       .populate('submittedBy', 'name email universityId')
-      .sort({ createdAt: -1 }); // Show newest first
+      .sort({ createdAt: -1 }); // show newest first
     res.json(complaints);
   } catch (error) {
     res.status(500).json({ msg: 'Server error' });
@@ -32,7 +32,7 @@ export const getAllComplaints = async (req, res) => {
 // UPDATE (Admin)
 export const updateComplaintStatus = async (req, res) => {
   try {
-    const { status } = req.body; // e.g., { "status": "resolved" }
+    const { status } = req.body; 
     const complaint = await Complaint.findByIdAndUpdate(
       req.params.id,
       { status },

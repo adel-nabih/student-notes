@@ -11,10 +11,10 @@ export const adminGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (authService.isAdmin()) {
-    return true; // User is an admin, allow access
+    return true; // if user is an admin, allow access
   }
 
-  // User is not an admin, redirect to home
+  // if user is not an admin, redirect to home
   router.navigate(['/']);
   return false;
 };

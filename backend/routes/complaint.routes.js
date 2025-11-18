@@ -5,33 +5,33 @@ import {
   updateComplaintStatus, 
   deleteComplaint,
   editComplaint 
-} from '../controllers/complaint.controller.js'; // We will create this next
+} from '../controllers/complaint.controller.js';
 
 import authMiddleware from '../middleware/authMiddleware.js';
 import adminMiddleware from '../middleware/adminMiddleware.js';
 
 const router = express.Router();
 
-// --- User Route ---
+// user
 // POST /api/complaints
-// (A logged-in user can CREATE a complaint)
+// only logged-in user can CREATE a complaint
 router.post('/', authMiddleware, createComplaint);
 
-// --- Admin CRUD Routes ---
+// admin crud routes
 // GET /api/complaints/admin
-// (An admin can READ all complaints)
+// admin can read
 router.get('/admin', adminMiddleware, getAllComplaints);
 
 // PUT /api/complaints/admin/:id
-// (An admin can UPDATE a complaint's status)
+// admin can update stuff
 router.put('/admin/:id', adminMiddleware, updateComplaintStatus);
 
 // PUT /api/complaints/admin/edit/:id
-// (An admin can UPDATE a complaint's text)
+// can update tetx of complaint
 router.put('/admin/edit/:id', adminMiddleware, editComplaint);
 
 // DELETE /api/complaints/admin/:id
-// (An admin can DELETE a complaint)
+// admin can delete
 router.delete('/admin/:id', adminMiddleware, deleteComplaint);
 
 export default router;

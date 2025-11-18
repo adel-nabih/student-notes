@@ -12,14 +12,12 @@ function createToken(userId) {
   });
 }
 
-// -----------------------------
 // SIGNUP
-// -----------------------------
 export const signup = async (req, res) => {
   try {
     const { name, email, universityId, password } = req.body;
 
-    // ... (validation code is fine)
+    
 
     // Hash password
     const hashed = await bcrypt.hash(password, 10);
@@ -30,7 +28,7 @@ export const signup = async (req, res) => {
       email,
       universityId,
       password: hashed,
-      // Note: The 'role' will automatically be set to 'user' by default from your model
+      // the role will automatically be set to 'user' by default from the model
     });
 
     // Create token
@@ -44,11 +42,10 @@ export const signup = async (req, res) => {
         name: user.name,
         email: user.email,
         universityId: user.universityId,
-        role: user.role // <-- 1. ADDED THIS LINE
+        role: user.role 
       },
     });
   } catch (err) {
-    // ... (error handling is fine)
     if (err.name === 'ValidationError') {
       return res.status(400).json({ msg: err.message });
     }
@@ -57,14 +54,13 @@ export const signup = async (req, res) => {
   }
 };
 
-// -----------------------------
+
 // LOGIN
-// -----------------------------
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // ... (validation is fine)
+    
     if (!email || !password) {
       return res.status(400).json({ msg: "Email and password are required" });
     }
@@ -85,7 +81,7 @@ export const login = async (req, res) => {
         name: user.name,
         email: user.email,
         universityId: user.universityId,
-        role: user.role // <-- 2. ADDED THIS LINE
+        role: user.role 
       },
     });
   } catch (err) {
@@ -93,9 +89,8 @@ export const login = async (req, res) => {
   }
 };
 
-// -----------------------------
+
 // GET ME (for protected routes)
-// -----------------------------
 export const getMe = async (req, res) => {
   try {
     // ... (code is fine)
