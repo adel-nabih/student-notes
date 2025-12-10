@@ -1,0 +1,70 @@
+<section class="admin-page">
+  <div class="header-row">
+    <h2>Admin Panel: Complaints</h2>
+    <button (click)="openAddModal()" class="add-new-btn">
+      + Add New
+    </button>
+  </div>
+
+  @if (isLoading()) {
+    <p>Loading complaints...</p>
+  }
+
+  @if (errorMsg()) {
+    <p class="error-message">{{ errorMsg() }}</p>
+  }
+
+  @if (!isLoading() && complaints().length === 0) {
+    <p>No complaints found.</p>
+  }
+
+  @if (complaints().length > 0) {
+    <table class="complaints-table">
+      <thead>
+        <tr>
+          <th>Submitted By</th>
+          <th>Email</th>
+          <th>Subject</th>
+          <th>Message</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (complaint of complaints(); track complaint._id) {
+          <tr>
+            <td>{{ complaint.submittedBy.name }}</td>
+            <td>{{ complaint.submittedBy.email }}</td>
+            <td>{{ complaint.subject }}</td>
+            <td>{{ complaint.message }}</td>
+            <td>{{ complaint.createdAt | date:'short' }}</td>
+            <td>
+              <span class="status-{{ complaint.status }}">
+                {{ complaint.status }}
+              </span>
+            </td>
+            <td>
+              <button (click)="openEditModal(complaint)" class="action-btn edit">
+                Edit
+              </button>
+              <button (click)="toggleStatus(complaint)" class="action-btn">
+                Mark as {{ complaint.status === 'pending' ? 'Resolved' : 'Pending' }}
+              </button>
+              <button (click)="deleteComplaint(complaint._id)" class="action-btn delete">
+                Delete
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
+
+<app-complaint-form-modal
+  [isOpen]="isModalOpen()"
+  [complaint]="currentComplaint()"
+  (close)="closeModal()"
+  (save)="handleSave($event)">
+</app-complaint-form-modal>

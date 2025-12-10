@@ -13,9 +13,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       lowercase: true,
       trim: true,
-      // --- THIS IS THE FIX ---
       // Allow for both @eslsca.edu AND @eslsca.edu.eg
-      // The ( )? makes the '.eg' part optional, just in case
       match: /^[a-zA-Z0-9._%+-]+@eslsca\.edu(\.eg)?$/,
     },
     password: {
@@ -28,7 +26,13 @@ const userSchema = new mongoose.Schema(
       unique: true,
       trim: true,
       match: /^[0-9]{5,10}$/, // This is still active
-    }
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user'
+    },
+    
   },
   { timestamps: true }
 );

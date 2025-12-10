@@ -1,22 +1,37 @@
 <section class="courses-page">
 
-  <!-- Major Tabs -->
   <h2 class="courses-heading">All Courses</h2>
 
+  <!-- Major Tabs -->
   <div class="major-tabs">
-    <button 
-      *ngFor="let major of majors"
-      (click)="selectMajor(major)"
-      [class.active]="major === selectedMajor">
-      {{ major }}
-    </button>
+    @for (major of majors; track major) {
+      <button 
+        (click)="selectMajor(major)"
+        [class.active]="major === selectedMajor()">
+        {{ major }}
+      </button>
+    }
   </div>
 
+  <!-- Loading State -->
+  @if (isLoading()) {
+    <p style="text-align: center; margin-top: 20px;">Loading courses...</p>
+  }
+
+  <!-- Course List -->
   <div class="course-list">
-    <div class="course-card" *ngFor="let course of filteredCourses">
-      <h3>{{ course.name }}</h3>
-      <p>{{ course.description }}</p>
-      <a [routerLink]="['/courses', course.id]">View Notes</a>
-    </div>
+    @for (course of filteredCourses; track course._id) {
+      <div class="course-card">
+        <h3>{{ course.name }}</h3>
+        <!-- We display the CODE because we don't have description in the DB yet -->
+        <p><strong>Code:</strong> {{ course.code }}</p>
+        <a [routerLink]="['/courses', course._id]">View Notes</a>
+      </div>
+    }
+    
+    <!-- Empty State -->
+    @if (!isLoading() && filteredCourses.length === 0) {
+      <p>No courses found for {{ selectedMajor() }}.</p>
+    }
   </div>
 </section>

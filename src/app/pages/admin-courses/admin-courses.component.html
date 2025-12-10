@@ -1,0 +1,46 @@
+<section class="admin-page">
+  <div class="header-row">
+    <h2>Admin Panel: Courses</h2>
+    <button (click)="openAddModal()" class="add-new-btn">+ Add Course</button>
+  </div>
+
+  @if (isLoading()) { <p>Loading...</p> }
+  @if (errorMsg()) { <p class="error-message">{{ errorMsg() }}</p> }
+
+  @if (courses().length > 0) {
+    <table class="complaints-table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Major</th> <!-- Major Name Column -->
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (course of courses(); track course._id) {
+          <tr>
+            <td><strong>{{ course.code }}</strong></td>
+            <td>{{ course.name }}</td>
+            <td>
+              <span class="status-resolved" style="color: #333; background: #e9ecef;">
+                {{ course.major.name }}
+              </span>
+            </td>
+            <td>
+              <button (click)="openEditModal(course)" class="action-btn edit">Edit</button>
+              <button (click)="deleteCourse(course._id)" class="action-btn delete">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
+
+<app-course-form-modal
+  [isOpen]="isModalOpen()"
+  [course]="currentCourse()"
+  (close)="closeModal()"
+  (save)="handleSave($event)">
+</app-course-form-modal>

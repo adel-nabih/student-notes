@@ -1,1 +1,37 @@
-<p>course-details works!</p>
+<section class="details-page">
+  <div class="header">
+    <a routerLink="/courses" class="back-link">← Back to Courses</a>
+    <h2>Course Notes</h2>
+  </div>
+
+  <!-- Loading State -->
+  @if (isLoading()) {
+    <p class="loading">Loading notes...</p>
+  }
+
+  <!-- Notes List -->
+  <div class="notes-grid">
+    @for (note of notes(); track note._id) {
+      <div class="note-card">
+        <div class="note-icon">📄</div>
+        <div class="note-info">
+          <h3>{{ note.title }}</h3>
+          <p class="uploaded-by">Uploaded by: {{ note.uploadedBy.name || 'Unknown' }}</p>
+          <p class="date">{{ note.createdAt | date:'mediumDate' }}</p>
+        </div>
+        <!-- The Download Button -->
+        <a [href]="getFileUrl(note.fileUrl)" target="_blank" class="download-btn">
+          View File
+        </a>
+      </div>
+    }
+  </div>
+
+  <!-- Empty State -->
+  @if (!isLoading() && notes().length === 0) {
+    <div class="empty-state">
+      <p>No notes uploaded for this course yet.</p>
+      <a routerLink="/upload" class="upload-link">Be the first to upload!</a>
+    </div>
+  }
+</section>

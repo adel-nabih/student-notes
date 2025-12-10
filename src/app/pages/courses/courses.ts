@@ -1,46 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common'; // <-- import CommonModule instead of NgForOf
+import { Course, CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [RouterLink, CommonModule], // <-- use CommonModule
+  imports: [RouterLink, CommonModule],
   templateUrl: './courses.html',
   styleUrls: ['./courses.css'],
 })
-export class CoursesComponent {
+export class CoursesComponent implements OnInit {
+  private courseService = inject(CourseService);
+
+  // Signal for the list of courses
+  courses = signal<Course[]>([]);
+  isLoading = signal(true);
+
   majors = ['Computing', 'Business', 'Media'];
-  selectedMajor = 'Computing';
+  selectedMajor = signal('Computing');
 
-  courses = [
-    { id: 1, name: 'Computer Science 101', description: 'Intro to CS', major: 'Computing' },
-    { id: 2, name: 'Business Management', description: 'Learn management basics', major: 'Business' },
-
-    { id: 3, name: 'Digital Media Design', description: 'Learn design tools', major: 'Media' },
-    { id: 4, name: 'Software Engineering', description: 'Advanced programming', major: 'Computing' },
-    { id: 5, name: 'Data Structures', description: 'Learn about arrays, lists, and trees', major: 'Computing' },
-    { id: 6, name: 'Web Development', description: 'Building A full working website!', major: 'Computing' },
-    { id: 7, name: 'Business Law', description: 'Covers legal rules for businesses, contracts, and regulations.', major: 'Business' },
-    { id: 8, name: 'Business English', description: 'Learn how to speak and write in professional English', major: 'Business' },
-    { id: 9, name: 'Photograpghy 101', description: 'Learn basics of photography', major: 'Media' },
-    { id: 10, name: 'Advertising & Marketing Media', description: 'Creating ads and marketing campaigns.', major: 'Media' },
-    { id: 11, name: 'Intro to Python', description: 'learn Python basics!', major: 'Computing' },
-    { id: 12, name: 'Business English', description: 'Learn how to speak and write in professional English', major: 'Computing' },
-    { id: 13, name: 'Database and mysql', description: 'Basic database and mysql skills', major: 'Computing' },
-
-
-
-
-
-
-  ];
+  ngOnInit() {
+    this.courseService.getCourses().subscribe({
+      next: (data) => {
+        this.courses.set(data);
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        console.error('Error fetching courses:', err);
+        this.isLoading.set(false);
+      }
+    });
+  }
 
   get filteredCourses() {
-    return this.courses.filter(course => course.major === this.selectedMajor);
+    // FIX: Access .name property since major is now an object
+    return this.courses().filter(course => course.major.name === this.selectedMajor());
   }
 
   selectMajor(major: string) {
-    this.selectedMajor = major;
+    this.selectedMajor.set(major);
   }
 }

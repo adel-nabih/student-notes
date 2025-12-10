@@ -1,0 +1,97 @@
+/* Reusing your standard Admin Page CSS logic */
+.admin-page {
+  padding-top: 80px; 
+  width: 100%; 
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding-left: 20px; 
+  padding-right: 20px;
+  padding-bottom: 40px;
+}
+
+.header-row { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 20px; 
+}
+
+.header-row h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #333;
+}
+
+.add-new-btn { 
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  padding: 10px 16px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.add-new-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Table Styling */
+.complaints-table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.complaints-table thead tr {
+  background-color: #007bff; 
+  color: white; 
+}
+
+.complaints-table th, 
+.complaints-table td { 
+  padding: 12px 15px; 
+  border-bottom: 1px solid #ddd; 
+  text-align: left;
+}
+
+.complaints-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Action Buttons */
+.action-btn { 
+  padding: 6px 12px; 
+  margin-right: 5px; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  color: white; 
+  font-size: 0.9rem;
+}
+
+.action-btn.edit { 
+  background-color: #ffc107; 
+  color: #212529; 
+}
+.action-btn.edit:hover {
+  background-color: #e0a800;
+}
+
+.action-btn.delete { 
+  background-color: #dc3545; 
+}
+.action-btn.delete:hover {
+  background-color: #c82333;
+}
+
+.error-message {
+  color: #d93025;
+  background-color: #fce8e6;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}

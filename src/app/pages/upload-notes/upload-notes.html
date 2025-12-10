@@ -1,1 +1,73 @@
-<p>upload-notes works!</p>
+<section class="upload-page">
+  <h2>Upload Notes</h2>
+
+  <!-- Login Check -->
+  @if (!isLoggedIn()) {
+    <div class="login-prompt">
+      <p>You must be logged in to upload notes.</p>
+      <a routerLink="/login" class="btn">Login Now</a>
+    </div>
+  }
+
+  <!-- Upload Form -->
+  @if (isLoggedIn()) {
+    <form (submit)="submit(); $event.preventDefault()">
+      
+      <!-- 1. Select Major -->
+      <div class="form-group">
+        <label>Select Major</label>
+        <select [value]="selectedMajor()" (change)="onMajorChange($event)">
+          @for (major of majors; track major) {
+            <option [value]="major">{{ major }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- 2. Select Course (Filtered) -->
+      <div class="form-group">
+        <label>Select Course</label>
+        <select [(ngModel)]="selectedCourseId" name="course" required>
+          <option value="" disabled selected>-- Choose a Course --</option>
+          @for (course of filteredCourses; track course._id) {
+            <option [value]="course._id">{{ course.code }} - {{ course.name }}</option>
+          }
+        </select>
+      </div>
+
+      <!-- 3. Title -->
+      <div class="form-group">
+        <label>Note Title</label>
+        <input 
+          type="text" 
+          [(ngModel)]="noteTitle" 
+          name="title" 
+          placeholder="e.g. Week 1 Slides" 
+          required>
+      </div>
+
+      <!-- 4. File Input -->
+      <div class="form-group">
+        <label>Upload File (PDF or Image)</label>
+        <input 
+          type="file" 
+          (change)="onFileSelected($event)" 
+          accept=".pdf, .jpg, .jpeg, .png" 
+          required>
+      </div>
+
+      <!-- Messages -->
+      @if (errorMsg()) {
+        <p class="error">{{ errorMsg() }}</p>
+      }
+      @if (successMsg()) {
+        <p class="success">{{ successMsg() }}</p>
+      }
+
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="isSubmitting()">
+        {{ isSubmitting() ? 'Uploading...' : 'Upload Note' }}
+      </button>
+
+    </form>
+  }
+</section>

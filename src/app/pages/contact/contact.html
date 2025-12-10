@@ -1,1 +1,52 @@
-<p>contact works!</p>
+<section class="contact-page">
+  
+  @if (!isLoggedIn()) {
+    <div class="login-prompt">
+      <h2>Please Log In</h2>
+      <p>You must be logged in to submit a contact form.</p>
+      <a routerLink="/login" class="login-btn">Login Now</a>
+    </div>
+  }
+
+  @if (isLoggedIn()) {
+    <h2>Contact Us</h2>
+    <p>Have an issue or a complaint? Let us know.</p>
+    
+    <form (submit)="submitComplaint(); $event.preventDefault()">
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input 
+          type="text" 
+          id="subject" 
+          [(ngModel)]="subject" 
+          name="subject" 
+          required>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea 
+          id="message" 
+          [(ngModel)]="message" 
+          name="message" 
+          rows="6" 
+          required></textarea>
+      </div>
+
+      <button type="submit" [disabled]="isSubmitting()">
+        @if (isSubmitting()) {
+          <span>Submitting...</span>
+        } @else {
+          <span>Submit</span>
+        }
+      </button>
+
+      @if (successMsg()) {
+        <p class="success-message">{{ successMsg() }}</p>
+      }
+      @if (errorMsg()) {
+        <p class="error-message">{{ errorMsg() }}</p>
+      }
+    </form>
+  }
+</section>

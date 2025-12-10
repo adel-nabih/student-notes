@@ -6,14 +6,13 @@ import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// --- Public Routes (No guard) ---
+// Public Routes (No guard) 
 router.post("/signup", signup);
 router.post("/login", login);
 
-// --- Protected Routes (Guard is active) ---
+//  Protected Routes (Guard is active)
 
-// 2. ADD THE MIDDLEWARE to the route.
-// This tells Express: "Run authMiddleware first. If it passes, run getMe."
+// add middleware to the route.
 router.get("/me", authMiddleware, getMe);
 
 export default router;
