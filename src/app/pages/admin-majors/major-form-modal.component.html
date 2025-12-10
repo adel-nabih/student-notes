@@ -1,0 +1,30 @@
+@if (isOpen) {
+  <div class="modal-overlay" (click)="handleClose()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>{{ modalTitle }}</h3>
+      
+      <form (submit)="handleSave(); $event.preventDefault()">
+        <div class="form-group">
+          <label>Major Name</label>
+          <input 
+            type="text" 
+            [(ngModel)]="name" 
+            name="name" 
+            required 
+            placeholder="e.g. Computing">
+        </div>
+
+        @if (errorMsg()) {
+          <p class="error-message">{{ errorMsg() }}</p>
+        }
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="handleClose()">Cancel</button>
+          <button type="submit" class="btn-save" [disabled]="isSubmitting()">
+            {{ isSubmitting() ? 'Saving...' : 'Save' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

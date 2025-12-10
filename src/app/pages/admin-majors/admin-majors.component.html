@@ -1,0 +1,41 @@
+<section class="admin-page">
+  <div class="header-row">
+    <h2>Admin Panel: Majors</h2>
+    <button (click)="openAddModal()" class="add-new-btn">+ Add Major</button>
+  </div>
+
+  @if (isLoading()) { <p>Loading...</p> }
+  @if (errorMsg()) { <p class="error-message">{{ errorMsg() }}</p> }
+
+  @if (majors().length > 0) {
+    <table class="complaints-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Created At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (major of majors(); track major._id) {
+          <tr>
+            <td>{{ major.name }}</td>
+            <td>{{ major.createdAt | date:'shortDate' }}</td>
+            <td>
+              <button (click)="openEditModal(major)" class="action-btn edit">Edit</button>
+              <button (click)="deleteMajor(major._id)" class="action-btn delete">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
+
+<!-- This tag creates the usage for MajorFormModalComponent -->
+<app-major-form-modal
+  [isOpen]="isModalOpen()"
+  [major]="currentMajor()"
+  (close)="closeModal()"
+  (save)="handleSave($event)">
+</app-major-form-modal>

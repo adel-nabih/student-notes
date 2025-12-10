@@ -1,0 +1,44 @@
+@if (isOpen) {
+  <div class="modal-overlay" (click)="handleClose()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h3>{{ modalTitle }}</h3>
+      
+      <form (submit)="handleSave(); $event.preventDefault()">
+        
+        <!-- Name Input -->
+        <div class="form-group">
+          <label>Course Name</label>
+          <input type="text" [(ngModel)]="name" name="name" required placeholder="e.g. Intro to CS">
+        </div>
+
+        <!-- Code Input -->
+        <div class="form-group">
+          <label>Course Code</label>
+          <input type="text" [(ngModel)]="code" name="code" required placeholder="e.g. CS101">
+        </div>
+
+        <!-- Major Dropdown -->
+        <div class="form-group">
+          <label>Major</label>
+          <select [(ngModel)]="majorId" name="major" required>
+            <option value="" disabled selected>-- Select Major --</option>
+            @for (m of majors(); track m._id) {
+              <option [value]="m._id">{{ m.name }}</option>
+            }
+          </select>
+        </div>
+
+        @if (errorMsg()) {
+          <p class="error-message">{{ errorMsg() }}</p>
+        }
+
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="handleClose()">Cancel</button>
+          <button type="submit" class="btn-save" [disabled]="isSubmitting()">
+            {{ isSubmitting() ? 'Saving...' : 'Save' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}

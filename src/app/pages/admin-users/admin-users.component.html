@@ -1,0 +1,45 @@
+<section class="admin-page">
+  <div class="header-row">
+    <h2>Admin Panel: Users</h2>
+    <!-- No "Add User" button needed, users should sign up themselves -->
+  </div>
+
+  @if (isLoading()) { <p>Loading users...</p> }
+  @if (errorMsg()) { <p class="error-message">{{ errorMsg() }}</p> }
+
+  @if (users().length > 0) {
+    <table class="complaints-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>University ID</th>
+          <th>Role</th>
+          <th>Joined</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users(); track user._id) {
+          <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.universityId }}</td>
+            <td>
+              <span [class]="user.role === 'admin' ? 'role-admin' : 'role-user'">
+                {{ user.role | titlecase }}
+              </span>
+            </td>
+            <td>{{ user.createdAt | date:'shortDate' }}</td>
+            <td>
+              <button (click)="toggleRole(user)" class="action-btn edit">
+                {{ user.role === 'admin' ? 'Demote to User' : 'Make Admin' }}
+              </button>
+              <button (click)="deleteUser(user._id)" class="action-btn delete">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

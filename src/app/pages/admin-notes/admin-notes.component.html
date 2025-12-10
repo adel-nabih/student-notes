@@ -1,0 +1,47 @@
+<section class="admin-page">
+  <div class="header-row">
+    <h2>Admin Panel: Notes</h2>
+  </div>
+
+  @if (isLoading()) { <p>Loading notes...</p> }
+  @if (errorMsg()) { <p class="error-message">{{ errorMsg() }}</p> }
+
+  @if (notes().length > 0) {
+    <table class="complaints-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Course</th>
+          <th>Uploaded By</th>
+          <th>File</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (note of notes(); track note._id) {
+          <tr>
+            <td>{{ note.title }}</td>
+            <td>
+              <strong>{{ note.course?.code }}</strong><br>
+              <small>{{ note.course?.name }}</small>
+            </td>
+            <td>
+              {{ note.uploadedBy?.name }}<br>
+              <small>{{ note.uploadedBy?.email }}</small>
+            </td>
+            <td>
+              <a [href]="getFileUrl(note.fileUrl)" target="_blank" class="action-btn" style="background-color: #17a2b8; text-decoration: none;">
+                View
+              </a>
+            </td>
+            <td>{{ note.createdAt | date:'shortDate' }}</td>
+            <td>
+              <button (click)="deleteNote(note._id)" class="action-btn delete">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>
